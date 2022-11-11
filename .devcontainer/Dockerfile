@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile-upstream:master-labs
 ARG VARIANT="bullseye"
 
-FROM stellar/quickstart as stellar
+FROM stellar/quickstart:soroban-dev as stellar
 
 FROM denoland/deno:1.27.2 as squirtle
 WORKDIR /app/
