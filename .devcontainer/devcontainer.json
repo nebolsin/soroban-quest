@@ -16,7 +16,14 @@
   "capAdd": ["SYS_PTRACE"],
   "securityOpt": [ "seccomp=unconfined" ],
 
-  "features": { "ghcr.io/devcontainers/features/github-cli": {} },
+"features": {
+	"ghcr.io/devcontainers/features/github-cli": {},
+	"ghcr.io/devcontainers/features/git:1": {},
+	"ghcr.io/devcontainers/features/github-cli:1": {},
+	"ghcr.io/devcontainers/features/ruby:1": {},
+	"ghcr.io/devcontainers/features/rust:1": {},
+	"ghcr.io/meaningful-ooo/devcontainer-features/fish:1": {}
+},
 
   // Configure tool-specific properties.
   "customizations": {
