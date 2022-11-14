@@ -6,24 +6,16 @@
 
   "build": {
     "dockerfile": "Dockerfile",
-    "args": {
-      // Use the VARIANT arg to pick a Debian OS version: buster, bullseye
-      // Use bullseye when on local on arm64/Apple Silicon.
-      "VARIANT": "bullseye"
-    }
+    "args": { "VARIANT": "bullseye" }
   },
+  "workspaceFolder": "/workspaces",
+  "capAdd": ["SYS_ PTRACE"],
+  "securityOpt": ["seccomp=unconfined"],
 
-  "capAdd": ["SYS_PTRACE"],
-  "securityOpt": [ "seccomp=unconfined" ],
-
-"features": {
-	"ghcr.io/devcontainers/features/github-cli": {},
-	"ghcr.io/devcontainers/features/git:1": {},
-	"ghcr.io/devcontainers/features/github-cli:1": {},
-	"ghcr.io/devcontainers/features/ruby:1": {},
-	"ghcr.io/devcontainers/features/rust:1": {},
-	"ghcr.io/meaningful-ooo/devcontainer-features/fish:1": {}
-},
+  "features": {
+    "ghcr.io/meaningful-ooo/devcontainer-features/fish:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
 
   // Configure tool-specific properties.
   "customizations": {
@@ -52,11 +44,9 @@
       "openFiles": ["README.md"]
     }
   }
-
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
 
   // Use 'postCreateCommand' to run commands after the container is created.
   // "postCreateCommand": "rustc --version",
-
 }
