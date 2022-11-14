@@ -9,7 +9,7 @@
     "args": { "VARIANT": "bullseye" }
   },
   "workspaceFolder": "/workspaces",
-  "capAdd": ["SYS_ PTRACE"],
+  "capAdd": ["SYS_PTRACE"],
   "securityOpt": ["seccomp=unconfined"],
 
   "features": {
