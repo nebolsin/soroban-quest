@@ -4,10 +4,10 @@ ARG VARIANT="bullseye"
 FROM stellar/quickstart:soroban-dev as stellar
 
 FROM denoland/deno:1.27.2 as squirtle
+ADD https://github.com/soroban-community/squirtle.git#main /app/
 WORKDIR /app/
-ADD https://github.com/tyvdh/soroban-quest--pioneer.git#main ./
-RUN deno compile --allow-env --allow-write --allow-read --allow-run --allow-net --unstable --output sq _squirtle/mod.ts
-RUN deno compile --allow-net --allow-read --allow-run --unstable --output sqweb _client/webserver.ts
+RUN deno compile --allow-env --allow-write --allow-read --allow-run --allow-net --unstable --output sq --target x86_64-unknown-linux-gnu src/cli.ts
+RUN deno compile --allow-net --allow-read --allow-run --unstable --output sqweb src/webserver.ts
 
 
 FROM mcr.microsoft.com/devcontainers/rust:1-${VARIANT}
@@ -64,10 +64,13 @@ RUN <<-EOF
 
     echo "Installing Soroban CLI..."
     cargo binstall --no-confirm soroban-cli
+
+    chown -R :rustlang "${RUSTUP_HOME}" "${CARGO_HOME}" /workspaces
+    chmod -R g+rw "${RUSTUP_HOME}" "${CARGO_HOME}" /workspaces
 EOF
 
-COPY --from=squirtle /app/sq /app/sqweb /workspaces/.local/bin/
-COPY --from=stellar /usr/local/bin/soroban-rpc /workspaces/.local/bin
+COPY --chown=vscode:rustlang --from=squirtle /app/sq /app/sqweb $HOME/.local/bin/
+COPY --chown=vscode:rustlang --from=stellar /usr/local/bin/soroban-rpc $HOME/.local/bin
 
 ENV PATH="/workspaces/.local/bin:${PATH}" \
     SOROBAN_RPC_URL="http://localhost:8000/soroban/rpc" \

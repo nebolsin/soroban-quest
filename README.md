@@ -3,6 +3,8 @@
 ![Stellar-Quest-email](https://user-images.githubusercontent.com/4383610/200077219-de8e1f20-9878-4705-bec6-ced9a3904694.jpg)
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)][gitpod]
+[![Open in GitHub Codespaces US](https://github.com/codespaces/badge.svg)][codespaces-us]
+[![Open in GitHub Codespaces Europe](https://github.com/codespaces/badge.svg)][codespaces-eu]
 
 ## Table of Contents <!-- omit in toc -->
 
@@ -81,3 +83,5 @@ the Soroban platform are there, and willing to answer questions, too! Talk about
 [pioneer]: https://github.com/tyvdh/soroban-quest--pioneer
 [discord]: https://discord.gg/8FhvuKb
 [dev-discord]: https://discord.gg/stellardev
+[codespaces-us]: https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=564436508&machine=standardLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json&location=EastUs
+[codespaces-eu]: https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=564436508&machine=standardLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json&location=WestEurope

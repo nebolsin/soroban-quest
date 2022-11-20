@@ -2,6 +2,12 @@ default: build
 
 all: build test
 
+fetch:
+	git stash -u
+	git fetch --all
+	git merge upstream/main
+	git stash pop
+
 test: build
 	cargo test
 

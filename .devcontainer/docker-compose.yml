@@ -1,0 +1,34 @@
+services:
+  futurenet:
+    image: stellar/quickstart:soroban-dev
+    restart: unless-stopped
+    env_file: ../.env
+    ports:
+      - "8000:8000"
+      - "11625:11625"
+      - "11626:11626"
+    command: --futurenet --enable-soroban-rpc
+
+  sandbox:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: sandbox
+      args:
+        VARIANT: bullseye
+
+  
+
+  quest:
+    image: ghcr.io/nebolsin/soroban-quest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VARIANT: bullseye
+    env_file: ../.env
+    volumes:
+    - soroban-workspace:/workspace
+
+volumes:
+  soroban-workspace:
